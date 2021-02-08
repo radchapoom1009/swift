@@ -17,15 +17,18 @@ from django.contrib import admin
 from book_management import views                     # add this
 from django.urls import path, include                 # add this
 from rest_framework import routers                    # add this
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.conf import settings
+from django.conf.urls.static import static
 
 router = routers.DefaultRouter()                      # add this
-router.register(r'todo_book', views.Todo_Book_View, 'book_management')     # add this
+router.register(r'book', views.Todo_Book_View, 'book_management')     # add this
 
-
-# print(views)
-# print("path : ",path)
 urlpatterns = [
     # path('index/', views.index),
     path('api/', include(router.urls)),   
     path('admin/', admin.site.urls),
 ]
+
+if settings.DEBUG:
+     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

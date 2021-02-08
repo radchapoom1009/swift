@@ -5,4 +5,4 @@ class TodoSerializer(serializers.ModelSerializer):
   class Meta:
     model = Book
     print("serializer :", serializers.ModelSerializer)
-    fields = ('id', 'title', 'description', 'completed')
+    fields = ('id', 'name', 'author', 'description','image')
